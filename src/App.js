@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 
 import Expenses from './components/Expenses/Expenses';
 import { ExpensesData } from './utils/ExpensesData';
@@ -15,8 +16,13 @@ function App() {
   // Modern JSX
   return (
     <div className='App'>
-      <h1>Expense Tracker</h1>
-      <Expenses items={expenses}></Expenses>
+      <>
+        <h1>Expense Tracker</h1>
+        {ReactDOM.createPortal(
+          <Expenses items={expenses}></Expenses>,
+          document.querySelector('body')
+        )}
+      </>
     </div>
   );
 
